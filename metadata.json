@@ -1,0 +1,6 @@
+{
+  "name": "SafeDrive",
+  "description": "Real-time distracted driver detection and alert system using computer vision",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

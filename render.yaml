@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: driver-distraction-ai
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: driver-distraction-ai-db
+          property: connectionString
+    healthCheckPath: /
+
+databases:
+  - name: driver-distraction-ai-db
+    plan: free
+    databaseName: driver_distraction_ai
+    user: driver_app

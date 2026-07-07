@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+
+  --card: 240 10% 6%;
+  --card-foreground: 0 0% 98%;
+
+  --popover: 240 10% 6%;
+  --popover-foreground: 0 0% 98%;
+
+  /* Cyan/Teal for "Safe" and Primary UI elements */
+  --primary: 180 100% 50%;
+  --primary-foreground: 240 10% 4%;
+
+  --secondary: 240 6% 15%;
+  --secondary-foreground: 0 0% 98%;
+
+  --muted: 240 6% 15%;
+  --muted-foreground: 240 5% 65%;
+
+  --accent: 240 6% 15%;
+  --accent-foreground: 0 0% 98%;
+
+  /* Red for "Distracted" / Danger */
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+
+  --border: 240 6% 15%;
+  --input: 240 6% 15%;
+  --ring: 180 100% 50%;
+
+  --radius: 0.5rem;
+  
+  --safe: 142 71% 45%;
+  --warning: 38 92% 50%;
+  --danger: 0 84% 60%;
+}
+
+.dark {
+  /* Dark mode is default, reusing variables */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px hsla(var(--primary), 0.5);
+  }
+  .text-glow-danger {
+    text-shadow: 0 0 10px hsla(var(--destructive), 0.5);
+  }
+  
+  .glass-panel {
+    @apply bg-card/50 backdrop-blur-xl border border-white/5;
+  }
+
+  .animate-pulse-fast {
+    animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full hover:bg-muted-foreground/50 transition-colors;
+}
