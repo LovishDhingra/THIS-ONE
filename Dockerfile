@@ -18,7 +18,7 @@ WORKDIR /app
 # Install Python dependencies in an isolated virtualenv to avoid the
 # "externally-managed-environment" restriction on recent Debian/pip
 RUN python3 -m venv /opt/venv
-ENV PATH="/opt/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="/opt/venv/bin:$PATH"
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
@@ -32,6 +32,6 @@ COPY . .
 RUN npm run build
 
 ENV NODE_ENV=production
-EXPOSE 10000
+EXPOSE 5000
 
-CMD ["sh", "-c", "if [ -n \"$DATABASE_URL\" ]; then npm run db:push; fi; npm run start"]
+CMD ["npm", "run", "start"]
